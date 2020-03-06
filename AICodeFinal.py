@@ -6,11 +6,24 @@ import webbrowser
 from fatsecret import Fatsecret
 import datetime
 
+
+def center_window(w=300, h=200):
+    #get screen width and height
+    ws = root.winfo_screenwidth()
+    hs = root.winfo_screenheight()
+    #calculate position x, y
+    x = (ws/2) - (w/2)    
+    y = (hs/2) - (h/2)
+    root.geometry('%dx%d+%d+%d' % (w, h, x, y))
+
+    
 global root,f1
 root = tkinter.Tk()
 root.title("Personal Nutritionist")
-root.attributes('-fullscreen', True)
-
+root.geometry("1366x768") #You want the size of the app to be 500x500
+root.resizable(0, 0)
+center_window(1366, 768) 
+root.attributes('-fullscreen', False)
 fs = Fatsecret('16fab56f70d1452ea8fbc4619b11f3ae', 'ed2efbca053542d688b24b360df70277')
 
 global id_mob
@@ -57,13 +70,6 @@ def view_reccomendations():
                           bg='#F7DC6F', bd=0)
     back.place(x=60, y=20)
 
-    about = tkinter.Button(root, text="About Us", command=main_fun, fg='maroon', font=("Arial", 17, "bold italic"),
-                           bg='#F7DC6F', bd=0)
-    about.place(x=900, y=20)
-
-    contact = tkinter.Button(root, text="Contact Us", command=main_fun, fg='maroon', font=("Arial", 17, "bold italic"),
-                             bg='#F7DC6F', bd=0)
-    contact.place(x=1050, y=20)
 
     signout = tkinter.Button(root, text="Sign Out", command=main_fun, fg='maroon', font=("Arial", 17, "bold italic"),
                              bg='#F7DC6F', bd=0)
@@ -127,14 +133,6 @@ def view_diet_plan():
     back = tkinter.Button(root, text="Back", command=add_diet_plan, fg='maroon', font=("Arial", 17, "bold italic"),
                           bg='#F7DC6F', bd=0)
     back.place(x=60, y=20)
-
-    about = tkinter.Button(root, text="About Us", command=main_fun, fg='maroon', font=("Arial", 17, "bold italic"),
-                           bg='#F7DC6F', bd=0)
-    about.place(x=900, y=20)
-
-    contact = tkinter.Button(root, text="Contact Us", command=main_fun, fg='maroon', font=("Arial", 17, "bold italic"),
-                             bg='#F7DC6F', bd=0)
-    contact.place(x=1050, y=20)
 
     signout = tkinter.Button(root, text="Sign Out", command=main_fun, fg='maroon', font=("Arial", 17, "bold italic"),
                              bg='#F7DC6F', bd=0)
@@ -214,14 +212,6 @@ def add_diet_plan():
                           bg='#F7DC6F', bd=0)
     back.place(x=60, y=20)
 
-    about = tkinter.Button(root, text="About Us", command=main_fun, fg='maroon', font=("Arial", 17, "bold italic"),
-                           bg='#F7DC6F', bd=0)
-    about.place(x=900, y=20)
-
-    contact = tkinter.Button(root, text="Contact Us", command=main_fun, fg='maroon', font=("Arial", 17, "bold italic"),
-                             bg='#F7DC6F', bd=0)
-    contact.place(x=1050, y=20)
-
     signout = tkinter.Button(root, text="Sign Out", command=main_fun, fg='maroon', font=("Arial", 17, "bold italic"),
                              bg='#F7DC6F', bd=0)
     signout.place(x=1220, y=20)
@@ -234,7 +224,7 @@ def add_diet_plan():
 
     itemtext = tkinter.Entry(root, font=("Arial", 25, "bold italic"), width=21)
     itemtext.place(x=800, y=250)
-
+     
     datelabel = tkinter.Label(root, text="Enter Time (HH:MM AM/PM)", fg='maroon', font=("Arial", 30, "bold italic"), bg='#F7DC6F')
     datelabel.place(x=200, y=350)
 
@@ -405,39 +395,31 @@ def searchrecipe():
                           bg='#F7DC6F', bd=0)
     back.place(x=60, y=20)
 
-    about = tkinter.Button(root, text="About Us", command=main_fun, fg='maroon', font=("Arial", 17, "bold italic"),
-                           bg='#F7DC6F', bd=0)
-    about.place(x=900, y=20)
-
-    contact = tkinter.Button(root, text="Contact Us", command=main_fun, fg='maroon', font=("Arial", 17, "bold italic"),
-                             bg='#F7DC6F', bd=0)
-    contact.place(x=1050, y=20)
-
     signout = tkinter.Button(root, text="Sign Out", command=main_fun, fg='maroon', font=("Arial", 17, "bold italic"),
                              bg='#F7DC6F', bd=0)
     signout.place(x=1220, y=20)
 
 
-    frame1 = tkinter.Frame(root, bg='#ce2d5c')
+    frame1 = tkinter.Frame(root, bg='black')
     frame1.place(x=180, y=150, height=120, width=200)
 
-    label1 = tkinter.Label(root, text="Search a Recipe:", anchor='w', justify='left', fg='white',font=("Arial", 15, "bold italic"),bg='#ce2d5c')
+    label1 = tkinter.Label(root, text="Search a Recipe:", anchor='w', justify='left', fg='#EC9706',font=("Arial", 15, "bold italic"),bg='black')
 
     label1.place(x=195, y=150)
 
     textbox1 = tkinter.Entry(root, font=("Arial", 12, "bold italic"), width=17)
     textbox1.place(x=195, y=190)
 
-    go1 = tkinter.Button(root, text="GO >", command=getrecipe, fg='maroon', font=("Arial", 12, "bold italic"), bg='white',
+    go1 = tkinter.Button(root, text="GO >", command=getrecipe, fg='maroon', font=("Arial", 12, "bold italic"), bg='#F7DC6F',
                         bd=0)
     go1.place(x=220, y=230)
 
-    frame2 = tkinter.Frame(root, bg='#ce2d5c')
+    frame2 = tkinter.Frame(root, bg='black')
     frame2.place(x=600, y=150, height=120, width=200)
 
-    label2 = tkinter.Label(root, text="Add a recipe:", anchor='w', justify='left', fg='white',
+    label2 = tkinter.Label(root, text="Add a recipe:", anchor='w', justify='left', fg='#EC9706',
                            font=("Arial", 15, "bold italic"),
-                           bg='#ce2d5c')
+                           bg='black')
 
     label2.place(x=615, y=150)
 
@@ -445,23 +427,23 @@ def searchrecipe():
     textbox2.place(x=615, y=190)
 
 
-    go2 = tkinter.Button(root, text="GO >", command=addrecipe, fg='maroon', font=("Arial", 12, "bold italic"), bg='white',
+    go2 = tkinter.Button(root, text="GO >", command=addrecipe, fg='maroon', font=("Arial", 12, "bold italic"), bg='#F7DC6F',
                          bd=0)
     go2.place(x=650, y=230)
 
-    frame3 = tkinter.Frame(root, bg='#ce2d5c')
+    frame3 = tkinter.Frame(root, bg='black')
     frame3.place(x=1000, y=150, height=120, width=200)
 
-    label3 = tkinter.Label(root, text="View your recipes:", anchor='w', justify='left', fg='white',
+    label3 = tkinter.Label(root, text="View your recipes:", anchor='w', justify='left', fg='#EC9706',
                            font=("Arial", 15, "bold italic"),
-                           bg='#ce2d5c')
+                           bg='black')
 
     label3.place(x=1015, y=150)
 
     textbox3 = tkinter.Entry(root, font=("Arial", 12, "bold italic"), width=17)
     textbox3.place(x=1015, y=190)
 
-    go3 = tkinter.Button(root, text="GO >", command=viewrecipe, fg='maroon', font=("Arial", 12, "bold italic"), bg='white',
+    go3 = tkinter.Button(root, text="GO >", command=viewrecipe, fg='maroon', font=("Arial", 12, "bold italic"), bg='#F7DC6F',
                          bd=0)
     go3.place(x=1050, y=230)
 
@@ -506,46 +488,23 @@ def searchfood():
     myimages1 = tkinter.Label(root, image = imgs1)
     myimages1.place(x=0, y=0)
 
-    head = tkinter.Label(root, text="    Enter Food Item:", anchor='w', justify='left', fg='white', font=("Arial", 17, "bold italic"),
-                         bg='#ce2d5c', width=45)
+    head = tkinter.Label(root, text="    Enter Food Item:", anchor='w', justify='left', fg='#EC9706', font=("Arial", 17, "bold italic"),
+                         bg='black', width=45)
     head.place(x=340, y=150)
 
     search_textbox = tkinter.Entry(root, font=("Arial", 17, "bold italic"), width=17)
     search_textbox.place(x=630, y=150)
 
-    go = tkinter.Button(root, text="Go >", command=displayfood, fg='maroon', font=("Arial", 12, "bold italic"), bg='white', bd=0)
+    go = tkinter.Button(root, text="Go >", command=displayfood, fg='maroon', font=("Arial", 12, "bold italic"), bg='#F7DC6F', bd=0)
     go.place(x=900, y=150)
 
     back = tkinter.Button(root, text="Back", command=menupage, fg='maroon', font=("Arial", 17, "bold italic"), bg='#F7DC6F', bd=0)
     back.place(x=60, y=20)
 
-    about = tkinter.Button(root, text="About Us", command=main_fun, fg='maroon', font=("Arial", 17, "bold italic"), bg='#F7DC6F', bd=0)
-    about.place(x=900, y=20)
-
-    contact = tkinter.Button(root, text="Contact Us", command = main_fun, fg='maroon', font=("Arial", 17, "bold italic"), bg='#F7DC6F', bd=0)
-    contact.place(x=1050, y=20)
-
     signout = tkinter.Button(root, text="Sign Out", command=main_fun, fg='maroon', font=("Arial", 17, "bold italic"),
                              bg='#F7DC6F', bd=0)
     signout.place(x=1220, y=20)
 
-    '''
-    var = tkinter.StringVar(root)
-    var.set(TIMESLOTS[0])
-
-    pt_dd = tkinter.OptionMenu(root, var, *TIMESLOTS)
-    pt_dd.config(font=("Arial", 12, "bold italic"), width=15, bg="white")
-    pt_dd.place(x=140,y=390)
-
-    dt = tkinter.Label(root, text="Drop off time:",fg='maroon', font=("Arial", 15, "bold italic"), bg='#F7DC6F')
-    dt.place(x=140, y=440)
-
-    dt_entry = tkinter.Entry(root, font=("Arial", 12, "bold italic"), width=19)
-    #dt_entry.insert(0,time.strftime("%x")+" "+time.strftime("%I")+":"+time.strftime("%M")+" "+time.strftime("%p"))
-    dt_entry.insert(0,"dd/mm/yyyy")
-    dt_entry.place(x=140, y=470)
-    #dt_entry.insert(time.strftime("%c"))
-    '''
 
     root.mainloop()
 
@@ -566,17 +525,11 @@ def menupage():
     back = tkinter.Button(root, text="Back", command=main_fun, fg='maroon', font=("Arial", 17, "bold italic"), bg='#F7DC6F', bd=0)
     back.place(x=60, y=20)
 
-    about = tkinter.Button(root, text="About Us", command=main_fun, fg='maroon', font=("Arial", 17, "bold italic"), bg='#F7DC6F', bd=0)
-    about.place(x=900, y=20)
-
-    contact = tkinter.Button(root, text="Contact Us", command = main_fun, fg='maroon', font=("Arial", 17, "bold italic"), bg='#F7DC6F', bd=0)
-    contact.place(x=1050, y=20)
-
     signout = tkinter.Button(root, text="Sign Out", command = main_fun, fg='maroon', font=("Arial", 17, "bold italic"), bg='#F7DC6F', bd=0)
     signout.place(x=1220, y=20)
 
     search = tkinter.Button(root, command=searchfood)
-    button1 = Image.open("facts.jpg")
+    button1 = Image.open("facts.png")
     button1 = button1.resize((320, 400), Image.ANTIALIAS)
     image1 = ImageTk.PhotoImage(button1)
     search.config(image=image1, bd=0)
@@ -584,7 +537,7 @@ def menupage():
     search.grid(row=1, column=1, padx=100, pady=120)
 
     recipe = tkinter.Button(root, command=searchrecipe)
-    button2 = Image.open("recipe.jpg")
+    button2 = Image.open("recipe1.jpeg")
     button2 = button2.resize((320, 400), Image.ANTIALIAS)
     image2 = ImageTk.PhotoImage(button2)
     recipe.config(image=image2)
@@ -592,14 +545,14 @@ def menupage():
     recipe.grid(row=1, column=2, pady=120)
 
     myaccount = tkinter.Button(root, command=add_diet_plan)
-    button3 = Image.open("diet.jpg  ")
+    button3 = Image.open("diet8.png")
     button3 = button3.resize((320, 400), Image.ANTIALIAS)
     image3 = ImageTk.PhotoImage(button3)
     myaccount.config(image=image3)
     myaccount.image = image3
     myaccount.grid(row=1, column=3, padx=100, pady=120)
 
-    head = tkinter.Label(root, text="Get Healthy with NUTRIFRIEND",fg='white', font=("Arial", 35, "bold italic"), bg='#ce2d5c', width=50)
+    head = tkinter.Label(root, text="Get Healthy with NUTRITION PLUS",fg='#EC9706', font=("Arial", 35, "bold italic"), bg='black', width=50)
     head.place(x=0, y=590)
 
     root.mainloop()
@@ -659,17 +612,11 @@ def login():
 def main_fun():
 
     global mob_textbox, pw_textbox, name_textbox, mobile_textbox, pass_textbox, height_textbox, weight_textbox
-    img= Image.open("nutri6final.png")
+    img= Image.open("main.jpg")
     img = img.resize((1362,763))
     img1 = ImageTk.PhotoImage(img)
     myimage1 = tkinter.Label(root, image = img1)
     myimage1.place(x=0, y=0)
-
-    about = tkinter.Button(root, text="About Us", command=main_fun, fg='maroon', font=("Arial", 17, "bold italic"), bg='#F7DC6F', bd=0)
-    about.place(x=900, y=20)
-
-    contact = tkinter.Button(root, text="Contact Us", command = main_fun, fg='maroon', font=("Arial", 17, "bold italic"), bg='#F7DC6F', bd=0)
-    contact.place(x=1050, y=20)
 
     signout = tkinter.Button(root, text="Exit", command = root.destroy, fg='maroon', font=("Arial", 17, "bold italic"), bg='#F7DC6F', bd=0)
     signout.place(x=1220, y=20)
