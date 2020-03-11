@@ -10,7 +10,7 @@ FILES IN THE REPOSITORY
 
 -Code- AICodeFinal.py
 
--Pictures- diet.jpg, facts.jpg, recipe.jpg, login.jpg, signup.jpg, nutri6final.png, nutri7.jpg
+-Pictures- diet.jpg, facts.jpg, recipe.jpg, login.jpg, signup.jpg, main.png, nutri7.jpg
 
 -Files- Normal.pkl, Underweight.pkl, Overweight.pkl, Users.pkl, Diet Plan.pkl
 
